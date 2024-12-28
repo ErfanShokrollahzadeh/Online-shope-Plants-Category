@@ -37,9 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'django_render_partial',  # Make sure this is included
     'home_module',
-    'account_module',  # Add this
+    'account_module',
 ]
 
 MIDDLEWARE = [
@@ -79,8 +78,8 @@ AUTH_USER_MODEL = 'account_module.User'
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
-MEDIA_ROOT = BASE_DIR / 'uploads'
-MEDIA_URL = '/medias/'
+MEDIA_ROOT = BASE_DIR / 'media'
+MEDIA_URL = '/media/'
 
 DATABASES = {
     'default': {
