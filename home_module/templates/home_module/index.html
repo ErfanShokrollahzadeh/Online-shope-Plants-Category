@@ -28,8 +28,8 @@
                 </li>
             </ul>
             <div class="d-flex">
-                <a href="/login" class="btn btn-outline-primary me-2">Login</a>
-                <a href="/signup" class="btn btn-primary">Sign Up</a>
+                <a href="{% url 'account_module:login' %}" class="btn btn-outline-primary me-2">Login</a>
+                <a href="{% url 'account_module:signup' %}" class="btn btn-primary">Sign Up</a>
             </div>
         </div>
     </div>
@@ -49,6 +49,20 @@
                     </div>
                 </div>
             </div>
+        </div>
+    </div>
+</div>
+
+<!-- Main Content Section -->
+<div class="container my-5">
+    <h2 class="text-center mb-5">The Importance of Plants</h2>
+    <div class="row">
+        <div class="col-md-6" data-aos="fade-up">
+            <p>Plants are essential to life on Earth. They provide oxygen, improve air quality, conserve water, preserve soil, and support wildlife. Plants are also a source of food, medicine, and materials for humans.</p>
+            <p>Having plants in your home can improve your mental health, reduce stress, and increase productivity. They add beauty and tranquility to any space, making your home a more pleasant place to live.</p>
+        </div>
+        <div class="col-md-6" data-aos="fade-up" data-aos-delay="100">
+            <img src="https://source.unsplash.com/random/600x400/?plants" class="img-fluid rounded" alt="Plants">
         </div>
     </div>
 </div>
@@ -81,7 +95,7 @@
                 <p class="lead mb-lg-0">Join our community of plant lovers today!</p>
             </div>
             <div class="col-lg-4 text-center text-lg-end">
-                <a href="/signup" class="btn btn-light btn-lg">Sign Up Now</a>
+                <a href="{% url 'signup' %}" class="btn btn-light btn-lg">Sign Up Now</a>
             </div>
         </div>
     </div>
@@ -93,7 +107,8 @@
         <div class="row">
             <div class="col-md-4">
                 <h5>Plant Shop</h5>
-                <p>Your one-stop shop for all things plants</p>
+                <p>Your one-stop shop for all things plants. We offer a wide variety of indoor and outdoor plants to suit every need and preference.</p>
+                <img src="https://source.unsplash.com/random/400x300/?plant" class="img-fluid rounded mt-3" alt="Plant">
             </div>
             <div class="col-md-4">
                 <h5>Quick Links</h5>
@@ -101,11 +116,13 @@
                     <li><a href="/products" class="text-white">All Products</a></li>
                     <li><a href="/about" class="text-white">About Us</a></li>
                     <li><a href="/contact" class="text-white">Contact</a></li>
+                    <li><a href="/blog" class="text-white">Blog</a></li>
                 </ul>
             </div>
             <div class="col-md-4">
                 <h5>Contact Us</h5>
                 <p>Email: info@plantshop.com<br>Phone: (123) 456-7890</p>
+                <img src="https://source.unsplash.com/random/400x300/?nature" class="img-fluid rounded mt-3" alt="Nature">
             </div>
         </div>
     </div>
