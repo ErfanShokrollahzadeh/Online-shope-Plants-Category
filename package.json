@@ -1,0 +1,15 @@
+{
+  "devDependencies": {
+    "tailwindcss": "^3.4.16"
+  },
+  "scripts": {
+    "build-css": "npx tailwindcss -i ./static/css/src/input.css -o ./static/css/output.css --watch"
+  },
+  "name": "plant-shop-test-templates-1",
+  "version": "1.0.0",
+  "main": "tailwind.config.js",
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": ""
+}
