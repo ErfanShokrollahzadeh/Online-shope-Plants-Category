@@ -17,6 +17,15 @@
                 <li class="nav-item">
                     <a class="nav-link" href="/products">Products</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/about">About Us</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/contact">Contact</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/blog">Blog</a>
+                </li>
             </ul>
             <div class="d-flex">
                 <a href="/login" class="btn btn-outline-primary me-2">Login</a>
@@ -28,8 +37,7 @@
 
 <!-- Hero Section with Dynamic Image -->
 <div class="hero-section position-relative">
-    {% if hero.hero_image %}
-    <div class="hero-img" style="background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('{{ hero.hero_image.url }}'); background-size: cover; background-position: center; height: 80vh;">
+    <div class="hero-img" style="background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('{{ hero.hero_image.url|default:default_hero_image }}'); background-size: cover; background-position: center; height: 80vh;">
         <div class="container h-100">
             <div class="row h-100 align-items-center">
                 <div class="col-lg-6 text-white" data-aos="fade-right">
@@ -43,7 +51,6 @@
             </div>
         </div>
     </div>
-    {% endif %}
 </div>
 
 <!-- Benefits Section -->
@@ -53,7 +60,7 @@
         {% for benefit in benefits %}
         <div class="col-md-4" data-aos="fade-up" data-aos-delay="{{ forloop.counter|add:1 }}00">
             <div class="card h-100 border-0 shadow-sm">
-                <img src="{{ benefit.image.url }}" class="card-img-top" alt="{{ benefit.title }}">
+                <img src="{{ benefit.image.url|default:default_benefit_image }}" class="card-img-top" alt="{{ benefit.title }}">
                 <div class="card-body text-center">
                     <i class="bi {{ benefit.icon_class }} fs-1 text-success mb-3"></i>
                     <h5 class="card-title">{{ benefit.title }}</h5>
@@ -103,5 +110,4 @@
         </div>
     </div>
 </footer>
-{% endblock %}
 {% endblock %}
