@@ -28,8 +28,8 @@
                 </li>
             </ul>
             <div class="d-flex">
-                <a href="{% url 'account_module:login' %}" class="btn btn-outline-primary me-2">Login</a>
-                <a href="{% url 'account_module:signup' %}" class="btn btn-primary">Sign Up</a>
+                <a href="{% url 'login' %}" class="btn btn-outline-primary me-2">Login</a>
+                <a href="{% url 'signup' %}" class="btn btn-primary">Sign Up</a>
             </div>
         </div>
     </div>
@@ -44,7 +44,7 @@
                     <h1 class="display-3 fw-bold">{{ hero.title }}</h1>
                     <p class="lead">{{ hero.subtitle }}</p>
                     <div class="d-flex gap-3">
-                        <a href="/signup" class="btn btn-success btn-lg">Get Started</a>
+                        <a href="{% url 'signup' %}" class="btn btn-success btn-lg">Get Started</a>
                         <a href="/products" class="btn btn-outline-light btn-lg">Browse Plants</a>
                     </div>
                 </div>

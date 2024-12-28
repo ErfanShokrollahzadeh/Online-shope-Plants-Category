@@ -1,13 +1,6 @@
-from django.db import models
 from django.contrib.auth.models import AbstractUser
+from django.db import models
 
 class User(AbstractUser):
-    # Add any additional fields if needed
+    # Add any custom fields here if needed
     pass
-
-    class Meta:
-        verbose_name = 'User'
-        verbose_name_plural = 'Users'
-
-    def __str__(self) -> str:
-        return self.username
