@@ -51,7 +51,7 @@
     <h2 class="text-center mb-5">Why Plants Matter</h2>
     <div class="row g-4">
         {% for benefit in benefits %}
-        <div class="col-md-4" data-aos="fade-up" data-aos-delay="{{ forloop.counter|multiply:100 }}">
+        <div class="col-md-4" data-aos="fade-up" data-aos-delay="{{ forloop.counter|add:1 }}00">
             <div class="card h-100 border-0 shadow-sm">
                 <img src="{{ benefit.image.url }}" class="card-img-top" alt="{{ benefit.title }}">
                 <div class="card-body text-center">
@@ -103,4 +103,5 @@
         </div>
     </div>
 </footer>
+{% endblock %}
 {% endblock %}
