@@ -159,3 +159,13 @@ STATIC_ROOT = BASE_DIR / 'staticfiles'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# Email Settings
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'  # Or your email provider's SMTP server
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = 'erfan.shokr300@gmail.com'  # Your email address
+EMAIL_HOST_PASSWORD = '765515erfanE$'  # Your email password or app-specific password
+# Email where you want to receive contact messages
+CONTACT_EMAIL = 'erfan.shokr300@gmail.com'
