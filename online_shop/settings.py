@@ -7,10 +7,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-]
-
-INSTALLED_APPS += [
     'social_django',
+    'home_module',
+    'account_module',
+    'about_module',  # Add this line
 ]
 
 AUTHENTICATION_BACKENDS = [
