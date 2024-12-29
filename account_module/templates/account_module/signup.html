@@ -11,23 +11,53 @@
     
     <div class="form-box" data-aos="fade-up">
         <h2 class="text-center mb-4">Create Account</h2>
+        
+        {% if messages %}
+        <div class="messages mb-3">
+            {% for message in messages %}
+            <div class="alert alert-{% if message.tags %}{{ message.tags }}{% else %}info{% endif %} alert-dismissible fade show" role="alert">
+                {{ message }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+            {% endfor %}
+        </div>
+        {% endif %}
+
         <form method="post" class="signup-form">
             {% csrf_token %}
             <div class="form-floating mb-3">
-                <input type="text" class="form-control" id="username" name="username" placeholder="Username" required>
+                <input type="text" class="form-control {% if form.username.errors %}is-invalid{% endif %}" 
+                       id="username" name="username" placeholder="Username" required 
+                       value="{{ form.username.value|default:'' }}">
                 <label for="username">Username</label>
+                {% if form.username.errors %}
+                <div class="invalid-feedback">{{ form.username.errors|join:", " }}</div>
+                {% endif %}
             </div>
             <div class="form-floating mb-3">
-                <input type="email" class="form-control" id="email" name="email" placeholder="Email" required>
+                <input type="email" class="form-control {% if form.email.errors %}is-invalid{% endif %}" 
+                       id="email" name="email" placeholder="Email" required
+                       value="{{ form.email.value|default:'' }}">
                 <label for="email">Email</label>
+                {% if form.email.errors %}
+                <div class="invalid-feedback">{{ form.email.errors|join:", " }}</div>
+                {% endif %}
             </div>
             <div class="form-floating mb-3">
-                <input type="password" class="form-control" id="password1" name="password1" placeholder="Password" required>
+                <input type="password" class="form-control {% if form.password1.errors %}is-invalid{% endif %}" 
+                       id="password1" name="password1" placeholder="Password" required>
                 <label for="password1">Password</label>
+                {% if form.password1.errors %}
+                <div class="invalid-feedback">{{ form.password1.errors|join:", " }}</div>
+                {% endif %}
             </div>
             <div class="form-floating mb-3">
-                <input type="password" class="form-control" id="password2" name="password2" placeholder="Confirm Password" required>
+                <input type="password" class="form-control {% if form.password2.errors %}is-invalid{% endif %}" 
+                       id="password2" name="password2" placeholder="Confirm Password" required>
                 <label for="password2">Confirm Password</label>
+                {% if form.password2.errors %}
+                <div class="invalid-feedback">{{ form.password2.errors|join:", " }}</div>
+                {% endif %}
             </div>
             <button type="submit" class="btn btn-primary w-100 py-2 mb-3">Sign Up</button>
             <p class="text-center">Already have an account? <a href="{% url 'login' %}">Login</a></p>

@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
 from pathlib import Path
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -162,10 +163,21 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # Email Settings
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'smtp.gmail.com'  # Or your email provider's SMTP server
+EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
-EMAIL_HOST_USER = 'erfan.shokr300@gmail.com'  # Your email address
-EMAIL_HOST_PASSWORD = '765515erfanE$'  # Your email password or app-specific password
-# Email where you want to receive contact messages
+EMAIL_HOST_USER = 'erfan.shokr300@gmail.com'
+EMAIL_HOST_PASSWORD = 'your-app-password'  # Your 16-digit app password
 CONTACT_EMAIL = 'erfan.shokr300@gmail.com'
+
+# SSL Settings
+import certifi
+import ssl
+EMAIL_USE_SSL = False
+EMAIL_SSL_CERTFILE = certifi.where()
+SMTP_SSL = False
+
+# For development only - in production use proper SSL certificates
+if DEBUG:
+    import os
+    os.environ['PYTHONHTTPSVERIFY'] = '0'
