@@ -1,21 +1,17 @@
 from django.shortcuts import render
 from django.http import HttpRequest
-from .models import HeroSection, PlantBenefit
+from .models import HeroSection, PlantBenefit, Slider
 
 # Create your views here.
 
 
-def indexhome(request):
-    hero = HeroSection.objects.first()
-    benefits = PlantBenefit.objects.all()
-    
-    # Default images
-    default_hero_image = 'https://source.unsplash.com/random/1600x900/?plants'
-    default_benefit_image = 'https://source.unsplash.com/random/400x300/?plant'
-    
-    return render(request, 'home_module/index.html', {
-        'hero': hero,
-        'benefits': benefits,
-        'default_hero_image': default_hero_image,
-        'default_benefit_image': default_benefit_image,
-    })
+def index(request):
+    context = {
+        'sliders': Slider.objects.filter(is_active=True).order_by('order'),
+        'hero': HeroSection.objects.first(),
+        'benefits': PlantBenefit.objects.all(),
+        'default_hero_image': '/static/images/default-hero.jpg',
+        'default_benefit_image': '/static/images/default-benefit.jpg',
+        'default_slider_image': '/static/images/default-slider.jpg',
+    }
+    return render(request, 'home_module/index.html', context)

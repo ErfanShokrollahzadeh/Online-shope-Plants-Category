@@ -53,6 +53,191 @@
     </div>
 </div>
 
+<!-- Slider Section -->
+<div class="slider-section my-5">
+    <div class="container">
+        <h2 class="text-center mb-4">Featured Plants</h2>
+        <div id="mainSlider" class="carousel slide shadow-lg" data-bs-ride="carousel">
+            <div class="carousel-indicators">
+                {% for slider in sliders %}
+                <button type="button" data-bs-target="#mainSlider" data-bs-slide-to="{{ forloop.counter0 }}" 
+                        {% if forloop.first %}class="active"{% endif %} aria-current="true" 
+                        aria-label="Slide {{ forloop.counter }}"></button>
+                {% endfor %}
+            </div>
+            
+            <div class="carousel-inner rounded">
+                {% for slider in sliders %}
+                <div class="carousel-item {% if forloop.first %}active{% endif %}">
+                    <img src="{{ slider.image.url }}" class="d-block w-100" alt="{{ slider.title }}">
+                    <div class="carousel-caption">
+                        <h2>{{ slider.title }}</h2>
+                        <p>{{ slider.subtitle }}</p>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+            
+            <button class="carousel-control-prev" type="button" data-bs-target="#mainSlider" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#mainSlider" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+    </div>
+</div>
+
+<style>
+.carousel-item {
+    height: 500px;
+    overflow: hidden;
+}
+
+.carousel-item img {
+    object-fit: cover;
+    height: 100%;
+    width: 100%;
+}
+
+.carousel-caption {
+    background: rgba(0, 0, 0, 0.5);
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.carousel-caption h2 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.carousel-caption p {
+    font-size: 1.2rem;
+}
+
+/* New styles for the slider section */
+.slider-section {
+    padding: 60px 0;
+    background-color: #f8f9fa;
+}
+
+.carousel {
+    border-radius: 15px;
+    overflow: hidden;
+}
+
+.carousel-item {
+    height: 500px;
+    overflow: hidden;
+    position: relative;
+}
+
+.carousel-item img {
+    object-fit: cover;
+    height: 100%;
+    width: 100%;
+}
+
+.carousel-caption {
+    background: rgba(0, 0, 0, 0.6);
+    padding: 20px;
+    border-radius: 10px;
+    max-width: 600px;
+    margin: 0 auto;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 40px;
+}
+
+.carousel-caption h2 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.carousel-caption p {
+    font-size: 1.2rem;
+    margin-bottom: 0;
+}
+
+.carousel-indicators {
+    bottom: 20px;
+}
+
+.carousel-control-prev,
+.carousel-control-next {
+    width: 5%;
+    opacity: 0.8;
+}
+
+.carousel-control-prev:hover,
+.carousel-control-next:hover {
+    opacity: 1;
+}
+
+/* Updated slider navigation styles */
+.carousel-control-prev,
+.carousel-control-next {
+    width: 50px;
+    height: 50px;
+    background: rgba(0, 0, 0, 0.7);
+    border-radius: 50%;
+    top: 50%;
+    transform: translateY(-50%);
+    opacity: 1;
+    margin: 0 20px;
+}
+
+.carousel-control-prev:hover,
+.carousel-control-next:hover {
+    background: rgba(0, 0, 0, 0.9);
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    width: 30px;
+    height: 30px;
+}
+
+.carousel-indicators {
+    bottom: 20px;
+}
+
+.carousel-indicators button {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    margin: 0 5px;
+    background-color: rgba(255, 255, 255, 0.5);
+}
+
+.carousel-indicators button.active {
+    background-color: #fff;
+}
+
+/* Make sure images are displayed properly */
+.carousel-item {
+    height: 500px;
+    background-color: #f8f9fa;
+}
+
+.carousel-item img {
+    object-fit: cover;
+    height: 100%;
+    width: 100%;
+}
+
+.slider-section {
+    background-color: #f8f9fa;
+    padding: 60px 0;
+    margin: 40px 0;
+}
+</style>
+
 <!-- Main Content Section -->
 <div class="container my-5">
     <h2 class="text-center mb-5">The Importance of Plants</h2>

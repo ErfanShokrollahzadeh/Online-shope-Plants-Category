@@ -22,6 +22,8 @@ from django.conf.urls.static import static
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('home_module.urls')),
-    path('account/', include('account_module.urls')),  # Remove namespace here
-    path('social-auth/', include('social_django.urls', namespace='social')),
-] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+    path('account/', include('account_module.urls')),
+]
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
