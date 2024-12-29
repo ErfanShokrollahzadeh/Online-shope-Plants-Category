@@ -1,4 +1,8 @@
-# ...existing code...
+import os
+from pathlib import Path
+
+# Build paths inside the project like this: BASE_DIR / 'subdir'.
+BASE_DIR = Path(__file__).resolve().parent.parent
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -11,6 +15,8 @@ INSTALLED_APPS = [
     'home_module',
     'account_module',
     'about_module',  # Add this line
+    'rest_framework',
+    'products',
 ]
 
 AUTHENTICATION_BACKENDS = [
@@ -56,4 +62,9 @@ SOCIAL_AUTH_PIPELINE = (
     'social_core.pipeline.user.user_details',
 )
 
+# Media files configuration
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
 # ...existing code...
+
