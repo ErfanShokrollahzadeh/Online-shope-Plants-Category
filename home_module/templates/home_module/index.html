@@ -11,7 +11,7 @@
                     <h1 class="display-3 fw-bold">{{ hero.title }}</h1>
                     <p class="lead">{{ hero.subtitle }}</p>
                     <div class="d-flex gap-3">
-                        <a href="{% url 'signup' %}" class="btn btn-success btn-lg">Get Started</a>
+                        <a href="{% url 'account_module:signup' %}" class="btn btn-success btn-lg">Get Started</a>
                         <a href="/products" class="btn btn-outline-light btn-lg">Browse Plants</a>
                     </div>
                 </div>
@@ -247,7 +247,7 @@
                 <p class="lead mb-lg-0">Join our community of plant lovers today!</p>
             </div>
             <div class="col-lg-4 text-center text-lg-end">
-                <a href="{% url 'signup' %}" class="btn btn-light btn-lg">Sign Up Now</a>
+                <a href="{% url 'account_module:signup' %}" class="btn btn-light btn-lg">Sign Up Now</a>
             </div>
         </div>
     </div>

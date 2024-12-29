@@ -92,6 +92,12 @@ AUTHENTICATION_BACKENDS = [
     'social_core.backends.facebook.FacebookOAuth2',
 ]
 
+# Authentication URLs
+LOGIN_URL = 'account_module:login'
+LOGIN_REDIRECT_URL = 'home'
+LOGOUT_URL = 'account_module:logout'
+LOGOUT_REDIRECT_URL = 'home'
+
 # Social Auth settings
 SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = 'your-google-oauth2-key'
 SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = 'your-google-oauth2-secret'
