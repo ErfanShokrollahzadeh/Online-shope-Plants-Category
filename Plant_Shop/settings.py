@@ -59,7 +59,9 @@ TEMPLATES = [
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
             BASE_DIR / 'templates',
+            BASE_DIR / 'about_module' / 'templates',
             BASE_DIR / 'account_module' / 'templates',
+            BASE_DIR / 'home_module' / 'templates',
         ],
         'APP_DIRS': True,
         'OPTIONS': {
@@ -68,7 +70,6 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
-                'django.template.context_processors.media',  # Important for media files
             ],
         },
     },

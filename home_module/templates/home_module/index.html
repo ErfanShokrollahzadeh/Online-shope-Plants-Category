@@ -2,39 +2,6 @@
 {% load static %}
 
 {% block content %}
-<!-- Navigation -->
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <div class="container">
-        <a class="navbar-brand" href="/">Plant Shop</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav me-auto">
-                <li class="nav-item">
-                    <a class="nav-link" href="/">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/products">Products</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/about">About Us</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/contact">Contact</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/blog">Blog</a>
-                </li>
-            </ul>
-            <div class="d-flex">
-                <a href="{% url 'login' %}" class="btn btn-outline-primary me-2">Login</a>
-                <a href="{% url 'signup' %}" class="btn btn-primary">Sign Up</a>
-            </div>
-        </div>
-    </div>
-</nav>
-
 <!-- Hero Section with Dynamic Image -->
 <div class="hero-section position-relative">
     <div class="hero-img" style="background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('{{ hero.hero_image.url|default:default_hero_image }}'); background-size: cover; background-position: center; height: 80vh;">
@@ -285,31 +252,4 @@
         </div>
     </div>
 </div>
-
-<!-- Footer -->
-<footer class="bg-dark text-white py-4 mt-5">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-4">
-                <h5>Plant Shop</h5>
-                <p>Your one-stop shop for all things plants. We offer a wide variety of indoor and outdoor plants to suit every need and preference.</p>
-                <img src="https://img.freepik.com/premium-photo/abstract-art-flower-pattern-illustration-beauty-artistic-background-design_784625-2932.jpg" class="img-fluid rounded mt-3" alt="Plant">
-            </div>
-            <div class="col-md-4">
-                <h5>Quick Links</h5>
-                <ul class="list-unstyled">
-                    <li><a href="/products" class="text-white">All Products</a></li>
-                    <li><a href="/about" class="text-white">About Us</a></li>
-                    <li><a href="/contact" class="text-white">Contact</a></li>
-                    <li><a href="/blog" class="text-white">Blog</a></li>
-                </ul>
-            </div>
-            <div class="col-md-4">
-                <h5>Contact Us</h5>
-                <p>Email: info@plantshop.com<br>Phone: (123) 456-7890</p>
-                <img src="https://img.freepik.com/premium-photo/painting-flowers-leaves_378362-1633.jpg" class="img-fluid rounded mt-3" alt="Nature">
-            </div>
-        </div>
-    </div>
-</footer>
 {% endblock %}
