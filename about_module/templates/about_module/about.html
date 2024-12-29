@@ -1,0 +1,267 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<!-- Hero Section -->
+<div class="about-hero">
+    <div class="container">
+        <div class="row align-items-center min-vh-75">
+            <div class="col-lg-6" data-aos="fade-right">
+                <h1 class="display-4 fw-bold mb-4">Our Story</h1>
+                <p class="lead">We're passionate about bringing the beauty and benefits of plants into people's lives. Our journey began with a simple idea: to make plant shopping easier and more enjoyable for everyone.</p>
+            </div>
+            <div class="col-lg-6" data-aos="fade-left">
+                <div class="floating-image">
+                    <img src="https://images.unsplash.com/photo-1581578731548-c64695cc6952" alt="Plant Shop" class="img-fluid rounded-4 shadow-lg">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Values Section -->
+<div class="values-section py-5">
+    <div class="container">
+        <h2 class="text-center mb-5" data-aos="fade-up">Our Values</h2>
+        <div class="row g-4">
+            <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+                <div class="value-card">
+                    <div class="icon-box mb-4">
+                        <i class="fas fa-leaf"></i>
+                    </div>
+                    <h3>Sustainability</h3>
+                    <p>We're committed to eco-friendly practices and sustainable plant sourcing.</p>
+                </div>
+            </div>
+            <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+                <div class="value-card">
+                    <div class="icon-box mb-4">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <h3>Quality</h3>
+                    <p>Every plant is carefully selected and nurtured before reaching your home.</p>
+                </div>
+            </div>
+            <div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
+                <div class="value-card">
+                    <div class="icon-box mb-4">
+                        <i class="fas fa-hands-helping"></i>
+                    </div>
+                    <h3>Community</h3>
+                    <p>Building a community of plant lovers and sharing knowledge.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Timeline Section -->
+<div class="timeline-section py-5 bg-light">
+    <div class="container">
+        <h2 class="text-center mb-5" data-aos="fade-up">Our Journey</h2>
+        <div class="timeline">
+            {% for milestone in milestones %}
+            <div class="timeline-item" data-aos="fade-up" data-aos-delay="{{ forloop.counter }}00">
+                <div class="timeline-content">
+                    <div class="year">{{ milestone.year }}</div>
+                    <h3>{{ milestone.title }}</h3>
+                    <p>{{ milestone.description }}</p>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+<!-- Team Section -->
+<div class="team-section py-5">
+    <div class="container">
+        <h2 class="text-center mb-5" data-aos="fade-up">Meet Our Team</h2>
+        <div class="row g-4">
+            {% for member in team_members %}
+            <div class="col-lg-4" data-aos="fade-up" data-aos-delay="{{ forloop.counter }}00">
+                <div class="team-card">
+                    <div class="member-image">
+                        <img src="{{ member.image }}" alt="{{ member.name }}" class="img-fluid">
+                    </div>
+                    <div class="member-info">
+                        <h3>{{ member.name }}</h3>
+                        <p class="position">{{ member.position }}</p>
+                        <p class="description">{{ member.description }}</p>
+                        <div class="social-links">
+                            <a href="#"><i class="fab fa-linkedin"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+<style>
+.about-hero {
+    padding: 100px 0;
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+}
+
+.floating-image {
+    animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-20px); }
+    100% { transform: translateY(0px); }
+}
+
+.value-card {
+    padding: 2rem;
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    transition: all 0.3s ease;
+    height: 100%;
+    text-align: center;
+}
+
+.value-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+}
+
+.icon-box {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: linear-gradient(45deg, #2196F3, #00BCD4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+}
+
+.icon-box i {
+    font-size: 2rem;
+    color: white;
+}
+
+.timeline {
+    position: relative;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.timeline::after {
+    content: '';
+    position: absolute;
+    width: 2px;
+    background: #2196F3;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.timeline-item {
+    padding: 20px 40px;
+    position: relative;
+    width: 50%;
+    left: 0;
+}
+
+.timeline-item:nth-child(even) {
+    left: 50%;
+}
+
+.timeline-content {
+    padding: 20px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    position: relative;
+}
+
+.year {
+    position: absolute;
+    top: -30px;
+    background: #2196F3;
+    color: white;
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-weight: bold;
+}
+
+.team-card {
+    background: white;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    transition: all 0.3s ease;
+}
+
+.team-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+}
+
+.member-image {
+    position: relative;
+    overflow: hidden;
+}
+
+.member-image img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    transition: all 0.3s ease;
+}
+
+.team-card:hover .member-image img {
+    transform: scale(1.1);
+}
+
+.member-info {
+    padding: 1.5rem;
+    text-align: center;
+}
+
+.position {
+    color: #2196F3;
+    font-weight: 500;
+    margin-bottom: 1rem;
+}
+
+.social-links {
+    margin-top: 1rem;
+}
+
+.social-links a {
+    color: #666;
+    margin: 0 10px;
+    font-size: 1.2rem;
+    transition: all 0.3s ease;
+}
+
+.social-links a:hover {
+    color: #2196F3;
+}
+
+@media (max-width: 768px) {
+    .timeline::after {
+        left: 31px;
+    }
+    
+    .timeline-item {
+        width: 100%;
+        padding-left: 70px;
+        padding-right: 25px;
+    }
+    
+    .timeline-item:nth-child(even) {
+        left: 0;
+    }
+}
+</style>
+{% endblock %}

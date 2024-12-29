@@ -28,12 +28,16 @@
         <div class="social-login">
             <p class="text-center mb-4">Or continue with</p>
             <div class="d-flex justify-content-center gap-4">
-                <a href="{% url 'social:begin' 'google-oauth2' %}" class="social-icon google">
-                    G
-                </a>
-                <a href="{% url 'social:begin' 'facebook' %}" class="social-icon facebook">
-                    F
-                </a>
+                {% if backends.google %}
+                    <a href="{{ social_urls.google }}" class="social-icon google">
+                        G
+                    </a>
+                {% endif %}
+                {% if backends.facebook %}
+                    <a href="{{ social_urls.facebook }}" class="social-icon facebook">
+                        F
+                    </a>
+                {% endif %}
             </div>
         </div>
         
