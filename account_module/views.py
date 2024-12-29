@@ -5,6 +5,7 @@ from django.conf import settings
 from .social_auth import get_social_auth_urls
 from django.contrib import messages
 from .forms import CustomUserCreationForm
+from django.db import transaction
 
 def login_view(request):
     if request.method == 'POST':
@@ -30,26 +31,18 @@ def signup_view(request):
         form = CustomUserCreationForm(request.POST)
         if form.is_valid():
             try:
-                user = form.save(commit=False)
-                user.email = form.cleaned_data['email']
-                user.save()
-                login(request, user)
-                messages.success(request, 'Account created successfully!')
-                return redirect('home')
+                with transaction.atomic():
+                    user = form.save()
+                    login(request, user, backend='django.contrib.auth.backends.ModelBackend')
+                    messages.success(request, 'Account created successfully!')
+                    return redirect('home')
             except Exception as e:
                 messages.error(request, f'Error creating account: {str(e)}')
         else:
             for field, errors in form.errors.items():
                 for error in errors:
-                    messages.error(request, f'{field}: {error}')
+                    messages.error(request, f'{error}')
     else:
         form = CustomUserCreationForm()
     
-    context = {
-        'form': form,
-        'backends': {
-            'google': True,
-            'facebook': True
-        }
-    }
-    return render(request, 'account_module/signup.html', context)
+    return render(request, 'account_module/signup.html', {'form': form})
