@@ -96,7 +96,7 @@ AUTHENTICATION_BACKENDS = [
 LOGIN_URL = 'account_module:login'
 LOGIN_REDIRECT_URL = 'home'
 LOGOUT_URL = 'account_module:logout'
-LOGOUT_REDIRECT_URL = 'home'
+LOGOUT_REDIRECT_URL = '/'  # Update this line
 
 # Social Auth settings
 SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = 'your-google-oauth2-key'

@@ -89,7 +89,7 @@
                         <a class="nav-link" href="{% url 'about:about' %}">About Us</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/contact">Contact</a>
+                        <a class="nav-link" href="{% url 'contact:contact' %}">Contact</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="/blog">Blog</a>
@@ -107,7 +107,7 @@
                                 <li><a class="dropdown-item" href="#"><i class="bi bi-gear me-2"></i>Settings</a></li>
                                 <li><hr class="dropdown-divider"></li>
                                 <li>
-                                    <form method="post" action="{% url 'account_module:logout' %}">
+                                    <form method="post" action="{% url 'account_module:logout' %}?next=/">
                                         {% csrf_token %}
                                         <button type="submit" class="dropdown-item text-danger">
                                             <i class="bi bi-box-arrow-right me-2"></i>Logout
@@ -145,7 +145,7 @@
                     <ul class="list-unstyled">
                         <li><a href="/products" class="text-white">All Products</a></li>
                         <li><a href="{% url 'about:about' %}" class="text-white">About Us</a></li>
-                        <li><a href="/contact" class="text-white">Contact</a></li>
+                        <li><a href="{% url 'contact:contact' %}" class="text-white">Contact</a></li>
                         <li><a href="/blog" class="text-white">Blog</a></li>
                     </ul>
                 </div>
