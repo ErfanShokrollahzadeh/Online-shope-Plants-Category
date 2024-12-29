@@ -17,7 +17,7 @@ class ProductFilter(filters.FilterSet):
         fields = ['category', 'min_price', 'max_price']
 
 class ProductViewSet(viewsets.ModelViewSet):
-    queryset = Product.objects.filter(is_available=True)
+    queryset = Product.objects.all()
     serializer_class = ProductSerializer
     permission_classes = [IsAuthenticatedOrReadOnly]
     filterset_class = ProductFilter
@@ -36,3 +36,7 @@ class ProductViewSet(viewsets.ModelViewSet):
 
 def product_page(request):
     return render(request, 'products_module/products.html')
+
+def products(request):
+    products = Product.objects.filter(is_available=True)
+    return render(request, 'products_module/products.html', {'products': products})

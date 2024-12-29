@@ -27,6 +27,7 @@ urlpatterns = [
     path('contact/', include('contact_module.urls', namespace='contact')),
     path('blog/', include('blog_module.urls', namespace='blog')),
     path('api/', include('product_module.urls')),  # Add this line
+    path('', include('products_module.urls')),  # Include products_module URLs
 ]
 
 if settings.DEBUG:

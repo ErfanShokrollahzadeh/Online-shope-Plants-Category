@@ -41,14 +41,14 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'home_module',
     'account_module',
-    'social_django',
+    'about_module',
     'contact_module',
     'blog_module',
     'rest_framework',
     'corsheaders',
     'rest_framework_simplejwt',
-    'products_module',
-    'product_module',  # Make sure this matches your app name exactly
+    'products_module',  # Ensure this line is present
+    'product_module',
 ]
 
 MIDDLEWARE = [
