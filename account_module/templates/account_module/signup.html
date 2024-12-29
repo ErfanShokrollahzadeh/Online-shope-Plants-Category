@@ -44,6 +44,12 @@
                 </a>
             </div>
         </div>
+        
+        <div class="text-center mt-4">
+            <a href="/" class="btn btn-outline-secondary back-home">
+                <i class="fas fa-home me-2"></i>Back to Home
+            </a>
+        </div>
     </div>
 </div>
 
@@ -174,6 +180,19 @@
 .social-icon.facebook:hover {
     background: #365899;
     box-shadow: 0 8px 25px rgba(66, 103, 178, 0.5);
+}
+
+.back-home {
+    transition: all 0.3s ease;
+    border-radius: 25px;
+    padding: 8px 20px;
+}
+
+.back-home:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    background-color: #6c757d;
+    color: white;
 }
 </style>
 {% endblock %}
