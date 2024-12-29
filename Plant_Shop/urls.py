@@ -23,12 +23,8 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('home_module.urls')),
     path('account/', include('account_module.urls')),
-    path('about/', include('about_module.urls', namespace='about')),  # Make sure namespace matches
+    path('about/', include('about_module.urls', namespace='about')),
     path('contact/', include('contact_module.urls', namespace='contact')),
     path('blog/', include('blog_module.urls', namespace='blog')),
-    path('api/', include('product_module.urls')),  # Add this line
-    path('', include('products_module.urls')),  # Include products_module URLs
-]
-
-if settings.DEBUG:
-    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+    path('products', include('products_module.urls')),
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
