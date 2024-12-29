@@ -24,6 +24,7 @@ urlpatterns = [
     path('', include('home_module.urls')),
     path('account/', include('account_module.urls')),
     path('about/', include('about_module.urls', namespace='about')),  # Make sure namespace matches
+    path('contact/', include('contact_module.urls', namespace='contact')),
 ]
 
 if settings.DEBUG:

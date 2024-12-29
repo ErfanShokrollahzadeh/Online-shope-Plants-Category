@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'home_module',
     'account_module',
     'social_django',
+    'contact_module',
 ]
 
 MIDDLEWARE = [
