@@ -5,30 +5,34 @@
       <div class="filter-controls">
         <div class="search-box">
           <i class="bi bi-search"></i>
-          <input 
-            v-model="filters.search" 
-            type="text" 
+          <input
+            v-model="filters.search"
+            type="text"
             placeholder="Search plants..."
-          >
+          />
         </div>
         <div class="filter-groups">
           <select v-model="filters.category" class="filter-select">
             <option value="">All Categories</option>
-            <option v-for="category in categories" :key="category.id" :value="category.id">
+            <option
+              v-for="category in categories"
+              :key="category.id"
+              :value="category.id"
+            >
               {{ category.title }}
             </option>
           </select>
           <div class="price-filter">
-            <input 
-              v-model.number="filters.minPrice" 
-              type="number" 
+            <input
+              v-model.number="filters.minPrice"
+              type="number"
               placeholder="Min price"
-            >
-            <input 
-              v-model.number="filters.maxPrice" 
-              type="number" 
+            />
+            <input
+              v-model.number="filters.maxPrice"
+              type="number"
               placeholder="Max price"
-            >
+            />
           </div>
         </div>
       </div>
@@ -36,14 +40,14 @@
 
     <!-- Products Grid -->
     <div class="products-grid">
-      <div 
-        v-for="product in products" 
-        :key="product.id" 
+      <div
+        v-for="product in products"
+        :key="product?.id"
         class="product-card"
         data-aos="fade-up"
       >
         <div class="product-image">
-          <img :src="product.image" :alt="product.title">
+          <img :src="product?.image" :alt="product?.title" />
           <div class="product-overlay">
             <button @click="addToCart(product)" class="cart-btn">
               <i class="bi bi-cart-plus"></i>
@@ -53,13 +57,17 @@
         </div>
         <div class="product-info">
           <div class="product-category">
-            <span v-for="cat in product.category" :key="cat.id" class="category-tag">
+            <span
+              v-for="cat in product?.category"
+              :key="cat.id"
+              class="category-tag"
+            >
               {{ cat.title }}
             </span>
           </div>
-          <h3>{{ product.title }}</h3>
-          <p class="price">${{ product.price }}</p>
-          <p class="description">{{ product.short_description }}</p>
+          <h3>{{ product?.title }}</h3>
+          <p class="price">${{ product?.price }}</p>
+          <p class="description">{{ product?.short_description }}</p>
         </div>
       </div>
     </div>
@@ -67,23 +75,23 @@
 </template>
 
 <script>
-import axios from 'axios';
-import AOS from 'aos';
-import 'aos/dist/aos.css';
+import axios from "axios";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 export default {
-  name: 'ProductsView',
+  name: "ProductsView",
   data() {
     return {
       products: [],
       categories: [],
       filters: {
-        search: '',
-        category: '',
-        minPrice: '',
-        maxPrice: ''
-      }
-    }
+        search: "",
+        category: "",
+        minPrice: "",
+        maxPrice: "",
+      },
+    };
   },
   methods: {
     async fetchProducts() {
@@ -92,25 +100,28 @@ export default {
           category: this.filters.category,
           min_price: this.filters.minPrice,
           max_price: this.filters.maxPrice,
-          search: this.filters.search
-        }
-        const response = await axios.get('http://127.0.0.1:8000/api/products/', { params });
+          search: this.filters.search,
+        };
+        const response = await axios.get(
+          "http://127.0.0.1:8000/api/products/",
+          { params }
+        );
         this.products = response.data;
       } catch (error) {
-        console.error('Error fetching products:', error);
+        console.error("Error fetching products:", error);
       }
     },
     addToCart(product) {
       // Implement cart functionality
-      console.log('Adding to cart:', product);
-    }
+      console.log("Adding to cart:", product);
+    },
   },
   mounted() {
     this.fetchProducts();
     AOS.init({
       duration: 800,
       offset: 100,
-      once: true
+      once: true,
     });
   },
   watch: {
@@ -118,10 +129,10 @@ export default {
       deep: true,
       handler() {
         this.fetchProducts();
-      }
-    }
-  }
-}
+      },
+    },
+  },
+};
 </script>
 
 <style scoped>
@@ -169,7 +180,7 @@ export default {
 }
 
 .search-box input:focus {
-  border-color: #4CAF50;
+  border-color: #4caf50;
   box-shadow: 0 0 0 2px rgba(76, 175, 80, 0.1);
 }
 
@@ -189,7 +200,7 @@ export default {
 
 .filter-select:focus,
 .price-filter input:focus {
-  border-color: #4CAF50;
+  border-color: #4caf50;
   outline: none;
 }
 
@@ -248,7 +259,7 @@ export default {
 }
 
 .cart-btn {
-  background: #4CAF50;
+  background: #4caf50;
   color: white;
   border: none;
   padding: 0.8rem 1.5rem;
@@ -278,7 +289,7 @@ export default {
   display: inline-block;
   padding: 0.3rem 0.8rem;
   background: #e8f5e9;
-  color: #4CAF50;
+  color: #4caf50;
   border-radius: 15px;
   font-size: 0.8rem;
   margin-right: 0.5rem;
@@ -292,7 +303,7 @@ export default {
 }
 
 .price {
-  color: #4CAF50;
+  color: #4caf50;
   font-weight: bold;
   font-size: 1.2rem;
   margin: 0.5rem 0;
@@ -313,21 +324,21 @@ export default {
   .products-container {
     padding: 1rem;
   }
-  
+
   .filter-controls {
     flex-direction: column;
   }
-  
+
   .search-box,
   .filter-groups {
     width: 100%;
   }
-  
+
   .price-filter {
     display: flex;
     gap: 0.5rem;
   }
-  
+
   .price-filter input {
     flex: 1;
   }
