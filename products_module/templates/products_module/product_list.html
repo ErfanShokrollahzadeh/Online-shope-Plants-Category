@@ -1,0 +1,147 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container py-5">
+    <!-- Category Filter -->
+    <div class="row mb-4">
+        <div class="col-md-12">
+            <div class="category-filters d-flex flex-wrap gap-2" data-aos="fade-up">
+                <button class="btn btn-outline-success active" data-filter="all">All Plants</button>
+                {% for category in categories %}
+                <button class="btn btn-outline-success" data-filter="{{ category.slug }}">
+                    {{ category.title }}
+                </button>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+    <!-- Products Grid -->
+    <div class="row g-4">
+        {% for product in products %}
+        <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="{{ forloop.counter|multiply:100 }}">
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="{{ product.image.url }}" alt="{{ product.name }}" class="img-fluid">
+                    {% if product.is_featured %}
+                    <span class="badge bg-success position-absolute top-0 start-0 m-3">Featured</span>
+                    {% endif %}
+                    <div class="product-overlay">
+                        <button class="btn btn-light quick-view" data-bs-toggle="modal" data-bs-target="#productModal-{{ product.id }}">
+                            <i class="bi bi-eye"></i> Quick View
+                        </button>
+                    </div>
+                </div>
+                <div class="product-info p-3">
+                    <h3 class="product-title">{{ product.name }}</h3>
+                    <p class="product-category"><i class="bi bi-tag"></i> {{ product.category.title }}</p>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <span class="price">${{ product.price }}</span>
+                        <button class="btn btn-success btn-sm add-to-cart">
+                            <i class="bi bi-cart-plus"></i> Add to Cart
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+<style>
+.product-card {
+    background: white;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+}
+
+.product-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+}
+
+.product-image {
+    position: relative;
+    overflow: hidden;
+    padding-top: 100%;
+}
+
+.product-image img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.product-card:hover .product-image img {
+    transform: scale(1.1);
+}
+
+.product-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.product-card:hover .product-overlay {
+    opacity: 1;
+}
+
+.product-title {
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+}
+
+.product-category {
+    font-size: 0.9rem;
+    color: #666;
+    margin-bottom: 1rem;
+}
+
+.price {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #28a745;
+}
+
+.category-filters {
+    position: sticky;
+    top: 20px;
+    z-index: 100;
+}
+
+.quick-view {
+    transform: translateY(20px);
+    opacity: 0;
+    transition: all 0.3s ease;
+}
+
+.product-card:hover .quick-view {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.col-md-6 {
+    animation: fadeIn 0.5s ease forwards;
+}
+</style>
+{% endblock %}

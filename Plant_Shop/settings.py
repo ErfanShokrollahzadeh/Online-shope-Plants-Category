@@ -47,8 +47,8 @@ INSTALLED_APPS = [
     'rest_framework',
     'corsheaders',
     'rest_framework_simplejwt',
-    'products_module',  # Ensure this line is present
-    'product_module',
+    'products_module',
+    'django.contrib.sites',  # Add this
 ]
 
 MIDDLEWARE = [
@@ -87,6 +87,7 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'Plant_Shop.wsgi.application'
 
+# Custom User Model
 AUTH_USER_MODEL = 'account_module.User'
 
 # Authentication settings
@@ -96,15 +97,16 @@ LOGIN_URL = '/account/login/'
 
 AUTHENTICATION_BACKENDS = [
     'django.contrib.auth.backends.ModelBackend',
-    'social_core.backends.google.GoogleOAuth2',
-    'social_core.backends.facebook.FacebookOAuth2',
 ]
 
 # Authentication URLs
-LOGIN_URL = 'account_module:login'
-LOGIN_REDIRECT_URL = 'home'
-LOGOUT_URL = 'account_module:logout'
-LOGOUT_REDIRECT_URL = '/'  # Update this line
+LOGIN_URL = '/account/login/'
+LOGIN_REDIRECT_URL = '/'
+LOGOUT_URL = '/account/logout/'
+LOGOUT_REDIRECT_URL = '/'
+
+# Site Framework
+SITE_ID = 1
 
 # Social Auth settings
 SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = 'your-google-oauth2-key'

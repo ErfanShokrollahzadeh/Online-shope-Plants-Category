@@ -16,7 +16,6 @@ INSTALLED_APPS = [
     'account_module',
     'about_module',  # Add this line
     'rest_framework',
-    'products',
 ]
 
 AUTHENTICATION_BACKENDS = [

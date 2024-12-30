@@ -26,5 +26,5 @@ urlpatterns = [
     path('about/', include('about_module.urls', namespace='about')),
     path('contact/', include('contact_module.urls', namespace='contact')),
     path('blog/', include('blog_module.urls', namespace='blog')),
-    path('products/', include('products_module.urls')),  # Add trailing slash
+    path('products/', include('products_module.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

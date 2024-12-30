@@ -1,45 +1,21 @@
-from rest_framework import viewsets, status
-from rest_framework.decorators import action
-from rest_framework.response import Response
-from rest_framework.permissions import IsAuthenticatedOrReadOnly
-from django_filters import rest_framework as filters
-from django.shortcuts import render
-from .models import Product
-from .serializers import ProductSerializer
+from django.views.generic import ListView, DetailView
+from .models import Product, ProductCategory
 
-class ProductFilter(filters.FilterSet):
-    min_price = filters.NumberFilter(field_name="price", lookup_expr='gte')
-    max_price = filters.NumberFilter(field_name="price", lookup_expr='lte')
-    category = filters.CharFilter(field_name="category")
+class ProductListView(ListView):
+    model = Product
+    template_name = 'products_module/product_list.html'
+    context_object_name = 'products'
 
-    class Meta:
-        model = Product
-        fields = ['category', 'min_price', 'max_price']
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['categories'] = ProductCategory.objects.filter(is_active=True)
+        return context
 
-class ProductViewSet(viewsets.ModelViewSet):
-    queryset = Product.objects.all().order_by('id')  # Add ordering
-    serializer_class = ProductSerializer
-    permission_classes = [IsAuthenticatedOrReadOnly]
-    filterset_class = ProductFilter
+    def get_queryset(self):
+        return Product.objects.filter(is_active=True)
 
-    @action(detail=True, methods=['post'])
-    def add_to_cart(self, request, pk=None):
-        try:
-            product = self.get_object()
-            # Add cart logic here
-            return Response({'status': 'Product added to cart'})
-        except Exception as e:
-            return Response(
-                {'error': str(e)},
-                status=status.HTTP_400_BAD_REQUEST
-            )
-
-def product_page(request):
-    return render(request, 'products_module/products.html')
-
-def products(request):
-    all_products = Product.objects.all()  # Fetch all products
-    context = {
-        'products': all_products
-    }
-    return render(request, 'products_module/products.html', context)
+class ProductDetailView(DetailView):
+    model = Product
+    template_name = 'products_module/product_detail.html'
+    context_object_name = 'product'
+    slug_url_kwarg = 'slug'
