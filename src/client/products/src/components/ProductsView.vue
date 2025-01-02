@@ -4,7 +4,7 @@
     <div class="filters" data-aos="fade-down">
       <div class="filter-controls">
         <div class="search-box">
-          <i class="bi bi-search"></i>
+          <i class="fas fa-search"></i>
           <input
             v-model="filters.search"
             type="text"
@@ -50,7 +50,7 @@
           <img :src="product?.image" :alt="product?.title" />
           <div class="product-overlay">
             <button @click="addToCart(product)" class="cart-btn">
-              <i class="bi bi-cart-plus"></i>
+              <i class="fas fa-cart-plus"></i>
               Add to Cart
             </button>
           </div>
@@ -137,17 +137,18 @@ export default {
 
 <style scoped>
 .products-container {
-  max-width: 1200px;
+  max-width: 1400px;
   margin: 0 auto;
   padding: 2rem;
+  background: #f8f9fa;
 }
 
 .filters {
-  margin-bottom: 2rem;
+  margin-bottom: 2.5rem;
   background: white;
   padding: 1.5rem;
-  border-radius: 15px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  border-radius: 20px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
 }
 
 .filter-controls {
@@ -160,23 +161,25 @@ export default {
 .search-box {
   position: relative;
   flex: 1;
-  min-width: 200px;
+  min-width: 250px;
 }
 
 .search-box i {
   position: absolute;
-  left: 1rem;
+  left: 1.2rem;
   top: 50%;
   transform: translateY(-50%);
-  color: #666;
+  color: #4CAF50;
+  font-size: 1.1rem;
 }
 
 .search-box input {
   width: 100%;
-  padding: 0.8rem 1rem 0.8rem 2.5rem;
-  border: 1px solid #eee;
-  border-radius: 25px;
+  padding: 1rem 1rem 1rem 3rem;
+  border: 2px solid #eee;
+  border-radius: 30px;
   transition: all 0.3s ease;
+  font-size: 1rem;
 }
 
 .search-box input:focus {
@@ -193,8 +196,8 @@ export default {
 .filter-select,
 .price-filter input {
   padding: 0.8rem 1rem;
-  border: 1px solid #eee;
-  border-radius: 8px;
+  border: 2px solid #eee;
+  border-radius: 15px;
   transition: all 0.3s ease;
 }
 
@@ -202,6 +205,22 @@ export default {
 .price-filter input:focus {
   border-color: #4caf50;
   outline: none;
+}
+
+.filter-select {
+  padding: 0.8rem 2rem;
+  border: 2px solid #eee;
+  border-radius: 15px;
+  background: white;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.price-filter input {
+  padding: 0.8rem 1rem;
+  border: 2px solid #eee;
+  border-radius: 15px;
+  width: 120px;
 }
 
 .products-grid {
@@ -212,20 +231,20 @@ export default {
 
 .product-card {
   background: white;
-  border-radius: 15px;
+  border-radius: 20px;
   overflow: hidden;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  transition: all 0.4s ease;
 }
 
 .product-card:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  transform: translateY(-10px) scale(1.02);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
 }
 
 .product-image {
   position: relative;
-  height: 250px;
+  height: 280px;
   overflow: hidden;
 }
 
@@ -246,7 +265,8 @@ export default {
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(0, 0, 0, 0.4);
+  background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.4));
+  backdrop-filter: blur(2px);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -259,14 +279,15 @@ export default {
 }
 
 .cart-btn {
-  background: #4caf50;
+  background: linear-gradient(135deg, #4CAF50, #45a049);
   color: white;
   border: none;
-  padding: 0.8rem 1.5rem;
-  border-radius: 25px;
-  cursor: pointer;
+  padding: 1rem 2rem;
+  border-radius: 30px;
+  font-weight: 600;
   transform: translateY(20px);
   transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 }
 
 .product-card:hover .cart-btn {
@@ -274,7 +295,7 @@ export default {
 }
 
 .cart-btn:hover {
-  background: #45a049;
+  background: linear-gradient(135deg, #45a049, #3e8e41);
 }
 
 .product-info {
