@@ -1,1 +1,79 @@
+# Python
+__pycache__/
+*.py[cod]
+*.so
+.Python
+*.egg
+*.egg-info/
+dist/
+build/
+eggs/
+parts/
+bin/
+var/
+sdist/
+develop-eggs/
+.installed.cfg
+lib/
+lib64/
+venv/
+env/
+.env
+
+# Django
+*.log
+local_settings.py
+db.sqlite3
+db.sqlite3-journal
+media/
+static/
+staticfiles/
+data/
+
+# Vue.js / Node
 node_modules/
+/dist/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.env.local
+.env.*.local
+
+# IDEs and editors
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+*.iml
+.project
+.classpath
+.settings/
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Coverage/Tests
+.coverage
+.tox/
+.pytest_cache/
+htmlcov/
+coverage/
+.coverage.*
+
+# Deployment
+*.cert
+*.key
+*.pem
+
+# Project specific
+Plant_Shop/settings/local.py
+Plant_Shop/settings/production.py
+/src/client/.env.development
+/src/client/.env.production
