@@ -1,0 +1,50 @@
+version: '3.8'
+
+services:
+  db:
+    image: postgres:15-alpine
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_DB=plantshop
+      - POSTGRES_USER=plantshop
+      - POSTGRES_PASSWORD=plantshop123
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U plantshop"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile.backend
+    volumes:
+      - ./src/server:/app
+      - static_volume:/app/static
+      - media_volume:/app/media
+    environment:
+      - DATABASE_URL=postgres://plantshop:plantshop123@db:5432/plantshop
+      - DEBUG=0
+      - SECRET_KEY=your-secret-key-here
+    depends_on:
+      db:
+        condition: service_healthy
+    command: >
+      sh -c "python manage.py migrate &&
+             python manage.py collectstatic --noinput &&
+             gunicorn Plant_Shop.wsgi:application --bind 0.0.0.0:8000"
+
+  frontend:
+    build:
+      context: .
+      dockerfile: Dockerfile.frontend
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+
+volumes:
+  postgres_data:
+  static_volume:
+  media_volume:
