@@ -1,29 +1,27 @@
 from django.contrib import admin
-from .models import Product, ProductCategory
+from . import models
 
-@admin.register(ProductCategory)
+@admin.register(models.ProductCategory)
 class ProductCategoryAdmin(admin.ModelAdmin):
-    list_display = ['title', 'is_active', 'created_at']
-    list_filter = ['is_active']
-    search_fields = ['title']
-    prepopulated_fields = {'slug': ('title',)}
+    list_display = ['title', 'url_title', 'is_active']
+    list_editable = ['is_active']
 
-@admin.register(Product)
+@admin.register(models.Product)
 class ProductAdmin(admin.ModelAdmin):
-    list_display = ['name', 'category', 'price', 'stock', 'is_active', 'is_featured']
-    list_filter = ['category', 'is_active', 'is_featured']
-    search_fields = ['name', 'description']
-    prepopulated_fields = {'slug': ('name',)}
-    list_editable = ['price', 'stock', 'is_active', 'is_featured']
+    list_display = ['title', 'price', 'is_active', 'category']
+    list_editable = ['is_active']
+    prepopulated_fields = {'slug': ('title',)}
     fieldsets = (
-        ('Basic Information', {
-            'fields': ('category', 'name', 'slug', 'description', 'price', 'image')
+        ('Main Information', {
+            'fields': ('title', 'category', 'price', 'image', 'slug')
         }),
-        ('Stock Information', {
-            'fields': ('stock', 'is_active', 'is_featured')
+        ('Descriptions', {
+            'fields': ('short_description', 'description')
         }),
-        ('Plant Care Details', {
-            'fields': ('care_instructions', 'plant_size', 'light_requirement', 'watering_frequency'),
-            'classes': ('collapse',)
-        })
+        ('Plant Care', {
+            'fields': ('light_requirement', 'watering_frequency', 'plant_size', 'care_instructions')
+        }),
+        ('Settings', {
+            'fields': ('is_active', 'is_delete')
+        }),
     )
