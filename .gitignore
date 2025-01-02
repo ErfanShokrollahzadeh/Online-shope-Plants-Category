@@ -1,45 +1,44 @@
-# Python
-__pycache__/
-*.py[cod]
-*.so
-.Python
-*.egg
-*.egg-info/
-dist/
-build/
-eggs/
-parts/
-bin/
-var/
-sdist/
-develop-eggs/
-.installed.cfg
-lib/
-lib64/
-venv/
-env/
+# Dependencies
+/src/client/node_modules
+/src/server/venv
+/src/server/env
+
+# Production builds
+/src/client/dist
+/src/client/build
+/src/server/dist
+/src/server/build
+
+# Django specific
+/src/server/**/__pycache__/
+/src/server/**/*.py[cod]
+/src/server/**/*.so
+/src/server/**/*.egg
+/src/server/**/*.egg-info
+/src/server/data/
+/src/server/media/
+/src/server/static/
+/src/server/staticfiles/
+/src/server/db.sqlite3
+/src/server/db.sqlite3-journal
+/src/server/**/*.log
+/src/server/local_settings.py
+
+# Vue.js specific
+/src/client/.env.local
+/src/client/.env.*.local
+/src/client/npm-debug.log*
+/src/client/yarn-debug.log*
+/src/client/yarn-error.log*
+
+# Environment files
 .env
-
-# Django
-*.log
-local_settings.py
-db.sqlite3
-db.sqlite3-journal
-media/
-static/
-staticfiles/
-data/
-
-# Vue.js / Node
-node_modules/
-/dist/
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
 .env.local
 .env.*.local
+/src/client/.env
+/src/server/.env
 
-# IDEs and editors
+# IDE and Editor folders
 .idea/
 .vscode/
 *.swp
@@ -59,21 +58,21 @@ yarn-error.log*
 ehthumbs.db
 Thumbs.db
 
-# Coverage/Tests
-.coverage
-.tox/
-.pytest_cache/
-htmlcov/
-coverage/
-.coverage.*
+# Testing and Coverage
+/src/server/.coverage
+/src/server/.tox/
+/src/server/.pytest_cache/
+/src/server/htmlcov/
+/src/client/coverage/
+/src/server/.coverage.*
 
 # Deployment
 *.cert
 *.key
 *.pem
 
-# Project specific
-Plant_Shop/settings/local.py
-Plant_Shop/settings/production.py
+# Project specific settings
+/src/server/Plant_Shop/settings/local.py
+/src/server/Plant_Shop/settings/production.py
 /src/client/.env.development
 /src/client/.env.production
