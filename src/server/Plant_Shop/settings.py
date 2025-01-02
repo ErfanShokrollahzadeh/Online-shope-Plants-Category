@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'corsheaders',
     'rest_framework_simplejwt',
+    'django_filters',  # Add this line
     'products_module',
     'django.contrib.sites',  # Add this
 ]
@@ -210,7 +211,8 @@ REST_FRAMEWORK = {
         'django_filters.rest_framework.DjangoFilterBackend',
     ),
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
-    'PAGE_SIZE': 12
+    'PAGE_SIZE': 12,
+    'TEMPLATE_PACK': 'rest_framework/vertical'  # Add this line
 }
 
 CORS_ALLOWED_ORIGINS = [

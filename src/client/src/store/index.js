@@ -1,27 +1,52 @@
 import { createStore } from 'vuex'
+import axios from 'axios'
 
 export default createStore({
   state: {
     products: [],
-    cart: []
+    pagination: {
+      count: 0,
+      next: null,
+      previous: null
+    },
+    loading: false,
+    error: null
   },
   mutations: {
-    setProducts(state, products) {
-      state.products = products
+    SET_PRODUCTS(state, data) {
+      state.products = data.results
+      state.pagination = {
+        count: data.count,
+        next: data.next,
+        previous: data.previous
+      }
     },
-    addToCart(state, product) {
-      state.cart.push(product)
+    SET_LOADING(state, loading) {
+      state.loading = loading
+    },
+    SET_ERROR(state, error) {
+      state.error = error
     }
   },
   actions: {
-    async fetchProducts({ commit }) {
+    async fetchProducts({ commit }, page = 1) {
+      commit('SET_LOADING', true)
       try {
-        const response = await fetch('http://localhost:8000/api/products/')
-        const data = await response.json()
-        commit('setProducts', data)
+        const response = await axios.get(`/api/products/?page=${page}`)
+        commit('SET_PRODUCTS', response.data)
+        commit('SET_ERROR', null)
       } catch (error) {
-        console.error('Error fetching products:', error)
+        commit('SET_ERROR', error.message)
+        commit('SET_PRODUCTS', { results: [], count: 0, next: null, previous: null })
+      } finally {
+        commit('SET_LOADING', false)
       }
     }
+  },
+  getters: {
+    getProducts: state => state.products,
+    isLoading: state => state.loading,
+    getError: state => state.error,
+    getPagination: state => state.pagination
   }
 })
