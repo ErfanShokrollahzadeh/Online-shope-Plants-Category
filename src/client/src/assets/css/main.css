@@ -1,0 +1,43 @@
+/* Global Styles */
+:root {
+  --primary-color: #4CAF50;
+  --secondary-color: #2c3e50;
+  --text-color: #2c3e50;
+  --background-light: #f8f9fa;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  color: var(--text-color);
+}
+
+/* Utility Classes */
+.text-primary {
+  color: var(--primary-color) !important;
+}
+
+.bg-primary-gradient {
+  background: linear-gradient(135deg, #66bb6a, #43a047);
+}
+
+/* Animation Classes */
+.hover-scale {
+  transition: transform 0.3s ease;
+}
+
+.hover-scale:hover {
+  transform: scale(1.05);
+}
+
+/* Custom Components */
+.custom-card {
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  transition: all 0.3s ease;
+}
+
+.custom-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+}

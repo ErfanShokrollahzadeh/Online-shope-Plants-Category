@@ -44,7 +44,7 @@
               </div>
               <div class="detail-item hvr-float">
                 <i class="fas fa-tint"></i>
-                <span>{{ product.watering_frequency }}</span>
+                <span>{{ product?.watering_frequency }}</span>
               </div>
               <div class="detail-item hvr-float">
                 <i class="fas fa-spa"></i>

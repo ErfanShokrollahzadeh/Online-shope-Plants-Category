@@ -9,7 +9,7 @@ import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-icons/font/bootstrap-icons.css'
 import '@fortawesome/fontawesome-free/css/all.css'
 
-// Initialize AOS
+// Initialize AOS with custom settings
 AOS.init({
   duration: 800,
   easing: 'ease-in-out',
@@ -18,6 +18,7 @@ AOS.init({
 })
 
 const app = createApp(App)
+
 app.use(router)
 app.use(store)
 app.mount('#app')
