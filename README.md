@@ -70,3 +70,133 @@ python manage.py runserver
 
 You can now access the application at `http://127.0.0.1:8000/`.
 
+## Entity Relationship Diagrams
+
+### Backend ERD
+
+```mermaid
+erDiagram
+    User ||--o{ Articles : writes
+    User {
+        string username
+        string email
+        string password
+        boolean is_active
+        boolean is_staff
+        datetime date_joined
+    }
+    
+    Articles ||--o{ ArticleCategory : belongs_to
+    Articles {
+        string title
+        string short_description
+        text description
+        string image
+        string slug
+        boolean is_active
+        datetime created_date
+    }
+    
+    ArticleCategory {
+        string title
+        string slug
+        int parent_id
+    }
+    
+    Product ||--o{ ProductCategory : belongs_to
+    Product {
+        string name
+        string slug
+        text description
+        decimal price
+        string image
+        int stock
+        boolean is_active
+        boolean is_featured
+        datetime created_at
+    }
+    
+    ProductCategory {
+        string title
+        string slug
+        boolean is_active
+    }
+    
+    SiteSetting {
+        string site_name
+        string site_url
+        text address
+        string logo
+        json email
+        text copy_right
+        string phone
+        boolean is_main_setting
+    }
+    
+    ContactUs {
+        string name
+        string email
+        string subject
+        text message
+        datetime created_date
+    }
+    
+    HeroSection {
+        string title
+        text subtitle
+        string hero_image
+    }
+    
+    PlantBenefit {
+        string title
+        text description
+        string icon_class
+        string image
+    }
+    
+    Slider {
+        string title
+        text subtitle
+        string image
+        int order
+        boolean is_active
+        datetime created_at
+    }
+```
+
+### Frontend Components Structure
+
+```mermaid
+graph TD
+    A[App] --> B[Layout]
+    B --> C[Header/Navigation]
+    B --> D[Footer]
+    B --> E[Main Content]
+    
+    E --> F[Home Page]
+    F --> G[Hero Section]
+    F --> H[Featured Products]
+    F --> I[Benefits Section]
+    F --> J[Slider]
+    
+    E --> K[Products Page]
+    K --> L[Product List]
+    K --> M[Product Filters]
+    K --> N[Product Card]
+    
+    E --> O[Article Page]
+    O --> P[Article List]
+    O --> Q[Article Detail]
+    
+    E --> R[Authentication]
+    R --> S[Login Form]
+    R --> T[Signup Form]
+    
+    E --> U[Contact Page]
+    U --> V[Contact Form]
+    
+    E --> W[About Page]
+    W --> X[Team Section]
+    W --> Y[Milestones]
+```
+
