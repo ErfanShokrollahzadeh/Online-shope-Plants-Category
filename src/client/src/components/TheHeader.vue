@@ -2,10 +2,10 @@
   <header class="site-header" :class="{ 'header-scrolled': isScrolled }">
     <nav class="navbar navbar-expand-lg">
       <div class="container">
-        <router-link class="navbar-brand" to="/" data-aos="fade-right">
+        <a href="http://127.0.0.1:8000/" class="navbar-brand" data-aos="fade-right">
           <i class="fas fa-leaf brand-leaf"></i>
           GreenOasis
-        </router-link>
+        </a>
 
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
           <span class="navbar-toggler-icon"></span>
