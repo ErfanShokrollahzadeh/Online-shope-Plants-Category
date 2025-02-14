@@ -1,30 +1,40 @@
-const { defineConfig } = require('@vue/cli-service')
-const path = require('path')
+const { defineConfig } = require("@vue/cli-service");
+const path = require("path");
 
 module.exports = defineConfig({
   transpileDependencies: true,
   devServer: {
     proxy: {
-      '/api': {
-        target: 'http://localhost:8000',
-        changeOrigin: true
-      }
+      "/api": {
+        target: "http://localhost:8000",
+        changeOrigin: true,
+      },
     },
-    allowedHosts: 'all'
+    allowedHosts: "all",
   },
   configureWebpack: {
     output: {
-      clean: true
+      clean: true,
     },
     optimization: {
       splitChunks: {
-        chunks: 'all'
-      }
+        chunks: "all",
+      },
     },
     resolve: {
       alias: {
-        '@': path.resolve(__dirname, 'src')
-      }
-    }
-  }
-})
+        "@": path.resolve(__dirname, "src"),
+      },
+    },
+  },
+  chainWebpack: (config) => {
+    config.module
+      .rule("js")
+      .use("babel-loader")
+      .tap((options) => {
+        // Disable cache to prevent permission issues
+        options.cacheDirectory = false;
+        return options;
+      });
+  },
+});
